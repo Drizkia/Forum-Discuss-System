@@ -1,4 +1,4 @@
-package sistemforumdiskusi_19.service;
+package sistemforumdiskusi_19.controller;
 
 import sistemforumdiskusi_19.model.*;
 import sistemforumdiskusi_19.database.DatabaseHelper;
@@ -165,6 +165,22 @@ public class ForumService {
             System.out.println("Error fetching posts: " + e.getMessage());
         }
         return posts;
+    }
+
+    /**
+     * Memeriksa apakah username sudah terdaftar tanpa mengubah sesi.
+     */
+    public boolean usernameExists(String username) {
+        String sql = "SELECT 1 FROM users WHERE username = ?";
+        try (Connection conn = DatabaseHelper.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            System.out.println("Error checking username: " + e.getMessage());
+        }
+        return false;
     }
 
     private void loadComments(Connection conn, Post post) {

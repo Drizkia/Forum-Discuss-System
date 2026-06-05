@@ -1,15 +1,15 @@
-package sistemforumdiskusi_19.main;
+
 
 import sistemforumdiskusi_19.database.DatabaseHelper;
-import sistemforumdiskusi_19.gui.LoginFrame;
-import sistemforumdiskusi_19.service.ForumService;
+import sistemforumdiskusi_19.controller.ForumController;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 /**
- * Main class untuk menjalankan sistem forum dengan GUI.
+ * Main class untuk menjalankan sistem forum dengan GUI dan pola MVC.
  */
+
 public class SistemForumDiskusi_19 {
     public static void main(String[] args) {
         // Initialize Database
@@ -24,9 +24,8 @@ public class SistemForumDiskusi_19 {
 
         // Jalankan GUI di Event Dispatch Thread
         SwingUtilities.invokeLater(() -> {
-            ForumService forumService = new ForumService();
-            LoginFrame loginFrame = new LoginFrame(forumService);
-            loginFrame.setVisible(true);
+            ForumController controller = new ForumController();
+            controller.startApplication();
         });
     }
 }
