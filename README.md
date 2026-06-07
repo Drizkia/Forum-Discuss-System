@@ -215,7 +215,7 @@ Controller bergantung pada abstraksi layanan (ForumService) untuk mengakses logi
 1. Clone repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Drizkia/Forum-Discuss-System.git
 ```
 
 2. Buka project pada NetBeans.
