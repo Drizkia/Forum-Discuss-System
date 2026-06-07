@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  * Encapsulation: Menggunakan protected/private attribute dengan public getter/setter.
  * SOLID (SRP): Menangani atribut dasar dari sebuah entitas konten di forum.
  */
-public abstract class ForumItem {
+public abstract class ForumItem implements Displayable {
     private int id;
     private String content;
     private User author;

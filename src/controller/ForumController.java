@@ -19,7 +19,7 @@ public class ForumController {
 
     private final ControllerLogin controllerLogin;
     private final ControllerMain  controllerMain;
-    private final ForumService    forumService;
+    private final IForumService   forumService;
 
     public ForumController() {
         this.forumService    = new ForumService();

@@ -8,10 +8,10 @@ import sistemforumdiskusi_19.model.User;
  */
 public class ControllerLogin {
 
-    private ForumService forumService;
+    private IForumService forumService;
     private User currentUser;
 
-    public ControllerLogin(ForumService forumService) {
+    public ControllerLogin(IForumService forumService) {
         this.forumService = forumService;
     }
 

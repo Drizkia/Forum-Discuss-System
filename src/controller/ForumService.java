@@ -17,7 +17,7 @@ import java.util.List;
  * SRP: Class ini bertanggung jawab untuk logika bisnis forum.
  * Menyimpan dan mengelola data postingan ke SQLite.
  */
-public class ForumService {
+public class ForumService implements IForumService {
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
