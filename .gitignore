@@ -1,6 +1,4 @@
-Cahier/build/
-Cahier/dist/
-/build/
-/dist/
+build/
+dist/
 nbproject/private/
 *.class

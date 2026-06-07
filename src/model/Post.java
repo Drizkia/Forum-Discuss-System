@@ -5,41 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Inheritance: Post merupakan turunan dari ForumItem (menggunakan extends).
  * Composition: Post memiliki daftar Comment (List<Comment>).
- * Encapsulation: Field privat dengan akses melalui getter.
+ * Encapsulation: Field privat dengan akses melalui getter/setter yang diwarisi dan dibuat.
  * SRP: Mengelola data postingan.
  */
-public class Post {
-    private int id;
+public class Post extends ForumItem {
     private String title;
-    private String content;
-    private User author;
-    private LocalDateTime timestamp;
     private List<Comment> comments;
 
     public Post(String title, String content, User author) {
+        super(content, author);
         this.title = title;
-        this.content = content;
-        this.author = author;
-        this.timestamp = LocalDateTime.now();
         this.comments = new ArrayList<>();
     }
 
     public Post(int id, String title, String content, User author, LocalDateTime timestamp) {
-        this.id = id;
+        super(id, content, author, timestamp);
         this.title = title;
-        this.content = content;
-        this.author = author;
-        this.timestamp = timestamp;
         this.comments = new ArrayList<>();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void addComment(Comment comment) {
@@ -50,19 +34,16 @@ public class Post {
         return title;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public User getAuthor() {
-        return author;
-    }
-
-    public LocalDateTime getTimestamp() {
-        return timestamp;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public List<Comment> getComments() {
         return comments;
+    }
+
+    @Override
+    public String getDisplayText() {
+        return "Post: " + title + " - " + getContent() + " (by " + getAuthor().getUsername() + ")";
     }
 }
