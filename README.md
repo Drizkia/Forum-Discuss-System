@@ -1,80 +1,74 @@
 # Forum Discussion System
 
-## Deskripsi Proyek
+## Overview
 
-Forum Discussion System merupakan aplikasi forum diskusi berbasis desktop yang dikembangkan menggunakan Java Swing dan SQLite. Sistem ini memungkinkan pengguna untuk melakukan registrasi, login, membuat postingan diskusi, mengedit postingan, menghapus postingan, serta memberikan komentar pada setiap diskusi yang tersedia.
+Forum Discussion System adalah aplikasi forum diskusi berbasis desktop yang dibangun menggunakan Java Swing dan SQLite. Sistem memungkinkan pengguna untuk melakukan registrasi akun, login, membuat postingan, memberikan komentar, mengedit postingan, serta mengelola diskusi melalui antarmuka grafis yang sederhana dan mudah digunakan.
 
-Aplikasi dibangun menggunakan pola arsitektur MVC (Model-View-Controller) untuk memisahkan logika bisnis, tampilan, dan pengelolaan data sehingga kode lebih terstruktur, mudah dikembangkan, dan mudah dipelihara.
-
----
-
-## Tujuan Proyek
-
-* Menerapkan konsep Pemrograman Berorientasi Objek (OOP).
-* Mengimplementasikan pola desain MVC.
-* Mengelola data menggunakan database SQLite.
-* Membangun aplikasi desktop interaktif menggunakan Java Swing.
-* Menerapkan prinsip-prinsip SOLID dalam pengembangan perangkat lunak.
+Proyek ini dikembangkan sebagai implementasi konsep Pemrograman Berorientasi Objek (Object-Oriented Programming), penerapan prinsip SOLID, serta penggunaan pola arsitektur Model-View-Controller (MVC) dalam pengembangan aplikasi desktop.
 
 ---
 
-## Fitur Utama
+## Features
 
-### Manajemen Pengguna
+### User Management
 
-* Registrasi akun baru
+* Registrasi pengguna baru
 * Login pengguna
-* Logout pengguna
+* Validasi username
+* Penyimpanan data pengguna ke database
 
-### Manajemen Postingan
+### Discussion Management
 
 * Membuat postingan diskusi
-* Melihat seluruh postingan
+* Menampilkan seluruh postingan
 * Mengedit postingan
 * Menghapus postingan
+* Menampilkan detail diskusi
 
-### Manajemen Komentar
+### Comment Management
 
 * Menambahkan komentar
 * Menampilkan komentar pada postingan
 * Menghapus komentar
 
-### Database
+### Database Integration
 
-* Penyimpanan data pengguna
-* Penyimpanan postingan
-* Penyimpanan komentar
-* Database SQLite terintegrasi
-
----
-
-## Teknologi yang Digunakan
-
-| Teknologi   | Kegunaan                     |
-| ----------- | ---------------------------- |
-| Java        | Bahasa pemrograman utama     |
-| Java Swing  | Antarmuka pengguna (GUI)     |
-| SQLite      | Database lokal               |
-| JDBC        | Koneksi Java dengan SQLite   |
-| MVC Pattern | Struktur arsitektur aplikasi |
+* SQLite Database
+* JDBC Connection
+* Pembuatan tabel otomatis saat aplikasi dijalankan
 
 ---
 
-## Struktur Proyek
+## Technologies
+
+| Technology       | Purpose                    |
+| ---------------- | -------------------------- |
+| Java             | Main Programming Language  |
+| Java Swing       | Graphical User Interface   |
+| SQLite           | Database Storage           |
+| JDBC             | Database Connectivity      |
+| MVC Pattern      | Application Architecture   |
+| SOLID Principles | Software Design Principles |
+
+---
+
+## Project Structure
 
 ```text
 src/
 │
+├── Main/
+│   └── MainApp.java
+│
 ├── controller/
+│   ├── ControllerLogin.java
+│   ├── ControllerMain.java
 │   ├── ForumController.java
 │   ├── ForumService.java
-│   ├── ControllerLogin.java
-│   └── ControllerMain.java
+│   └── IForumService.java
 │
-├── model/
-│   ├── User.java
-│   ├── Post.java
-│   └── Comment.java
+├── database/
+│   └── DatabaseHelper.java
 │
 ├── gui/
 │   ├── LoginFrame.java
@@ -82,27 +76,31 @@ src/
 │   ├── CreateEditPostFrame.java
 │   └── PostDetailFrame.java
 │
-├── database/
-│   └── DatabaseHelper.java
-│
-└── SistemForumDiskusi_19.java
+└── model/
+    ├── User.java
+    ├── Post.java
+    ├── Comment.java
+    ├── ForumItem.java
+    └── Displayable.java
 ```
 
 ---
 
-## Arsitektur MVC
+## MVC Architecture
 
 ### Model
 
-Menyimpan struktur data aplikasi.
+Merepresentasikan data dan aturan bisnis aplikasi.
 
 * User
 * Post
 * Comment
+* ForumItem
+* Displayable
 
 ### View
 
-Menampilkan antarmuka pengguna.
+Menangani tampilan antarmuka pengguna.
 
 * LoginFrame
 * MainFrame
@@ -111,22 +109,20 @@ Menampilkan antarmuka pengguna.
 
 ### Controller
 
-Menghubungkan View dan Model.
+Menghubungkan View dengan Model dan mengelola alur aplikasi.
 
-* ForumController
 * ControllerLogin
 * ControllerMain
+* ForumController
 * ForumService
 
 ---
 
-## Konsep OOP yang Digunakan
+## Object-Oriented Programming Implementation
 
 ### Encapsulation
 
-Data pada setiap model disimpan menggunakan atribut private dan diakses melalui getter serta setter.
-
-Contoh:
+Setiap model menyimpan data menggunakan atribut private dan menyediakan akses melalui getter dan setter.
 
 ```java
 private String username;
@@ -136,109 +132,111 @@ public String getUsername() {
 }
 ```
 
+### Inheritance
+
+Class Post dan Comment mewarisi abstract class ForumItem.
+
+```java
+public class Post extends ForumItem
+```
+
+```java
+public class Comment extends ForumItem
+```
+
+### Abstraction
+
+ForumItem dibuat sebagai abstract class yang mendefinisikan perilaku dasar seluruh konten forum.
+
+```java
+public abstract class ForumItem
+```
+
+### Polymorphism
+
+Method getDisplayText() dioverride oleh class turunan untuk menghasilkan representasi tampilan yang berbeda.
+
+```java
+@Override
+public String getDisplayText()
+```
+
 ### Composition
 
-Relasi antar objek dibangun menggunakan komposisi.
-
-Contoh:
+Post memiliki relasi dengan User dan kumpulan Comment.
 
 ```java
 private User author;
 private List<Comment> comments;
 ```
 
-### Abstraction
-
-GUI hanya berinteraksi dengan controller tanpa mengetahui detail database.
-
-Contoh:
-
-```java
-controller.createPost(...);
-```
-
-### Inheritance
-
-Seluruh tampilan GUI mewarisi komponen Swing seperti:
-
-```java
-public class LoginFrame extends JFrame
-```
-
-```java
-public class CreateEditPostFrame extends JDialog
-```
-
 ---
 
-## Implementasi SOLID
+## SOLID Principles Implementation
 
 ### Single Responsibility Principle (SRP)
 
-Setiap kelas memiliki satu tanggung jawab utama.
+Setiap class memiliki satu tanggung jawab utama.
 
-* User → data pengguna
-* Post → data postingan
-* Comment → data komentar
-* ControllerLogin → autentikasi
-* ControllerMain → navigasi frame
-* ForumService → logika bisnis forum
+| Class           | Responsibility              |
+| --------------- | --------------------------- |
+| User            | Menyimpan data pengguna     |
+| Post            | Menyimpan data postingan    |
+| Comment         | Menyimpan data komentar     |
+| DatabaseHelper  | Mengelola database          |
+| ControllerLogin | Mengelola login             |
+| ControllerMain  | Mengelola navigasi aplikasi |
+| ForumService    | Menjalankan logika bisnis   |
+
+---
 
 ### Open Closed Principle (OCP)
 
-GUI menggunakan ForumController sebagai façade sehingga fitur baru dapat ditambahkan tanpa mengubah seluruh tampilan.
+Sistem dapat diperluas dengan menambahkan jenis ForumItem baru tanpa mengubah struktur utama aplikasi.
+
+---
 
 ### Liskov Substitution Principle (LSP)
 
-Turunan JFrame dan JDialog dapat digunakan menggantikan superclass Swing tanpa mengubah perilaku program.
+Objek Post dan Comment dapat digunakan sebagai ForumItem tanpa mengubah perilaku program.
+
+```java
+ForumItem item = new Post(...);
+```
+
+---
 
 ### Interface Segregation Principle (ISP)
 
-Belum menggunakan interface khusus karena kebutuhan proyek masih sederhana.
+Interface Displayable menyediakan kontrak khusus untuk objek yang dapat ditampilkan.
+
+```java
+public interface Displayable {
+    String getDisplayText();
+}
+```
+
+---
 
 ### Dependency Inversion Principle (DIP)
 
-Controller bergantung pada abstraksi layanan (ForumService) untuk mengakses logika bisnis, bukan langsung mengakses database.
+Controller bergantung pada abstraksi IForumService, bukan implementasi konkret.
+
+```java
+public interface IForumService
+```
+
+```java
+public class ForumService implements IForumService
+```
 
 ---
 
-## Cara Menjalankan Program
-
-### Persyaratan
-
-* JDK 8 atau lebih baru
-* NetBeans IDE (disarankan)
-* SQLite JDBC Driver
-
-### Langkah Menjalankan
-
-1. Clone repository:
-
-```bash
-git clone https://github.com/Drizkia/Forum-Discuss-System.git
-```
-
-2. Buka project pada NetBeans.
-
-3. Pastikan library SQLite JDBC sudah terpasang.
-
-4. Jalankan:
-
-```bash
-SistemForumDiskusi_19.java
-```
-
-5. Database akan dibuat otomatis apabila belum tersedia.
-
----
-
-## Database
-
-Aplikasi menggunakan tiga tabel utama:
+## Database Design
 
 ### users
 
-| Field    | Tipe    |
+| Field    | Type    |
 | -------- | ------- |
 | id       | INTEGER |
 | username | TEXT    |
@@ -246,7 +244,7 @@ Aplikasi menggunakan tiga tabel utama:
 
 ### posts
 
-| Field     | Tipe     |
+| Field     | Type     |
 | --------- | -------- |
 | id        | INTEGER  |
 | title     | TEXT     |
@@ -256,7 +254,7 @@ Aplikasi menggunakan tiga tabel utama:
 
 ### comments
 
-| Field     | Tipe     |
+| Field     | Type     |
 | --------- | -------- |
 | id        | INTEGER  |
 | content   | TEXT     |
@@ -266,4 +264,51 @@ Aplikasi menggunakan tiga tabel utama:
 
 ---
 
-Proyek dibuat sebagai implementasi konsep Pemrograman Berorientasi Objek (OOP), MVC Pattern, dan Database Management menggunakan Java Swing dan SQLite.
+## How to Run
+
+### Requirements
+
+* Java JDK 8+
+* NetBeans IDE (Recommended)
+* SQLite JDBC Driver
+
+### Steps
+
+Clone repository:
+
+```bash
+git clone https://github.com/Drizkia/Forum-Discuss-System.git
+```
+
+Open project in NetBeans.
+
+Ensure SQLite JDBC library is available.
+
+Run:
+
+```bash
+MainApp.java
+```
+
+The database and tables will be initialized automatically.
+
+---
+
+## Learning Outcomes
+
+Proyek ini menunjukkan implementasi:
+
+* Object-Oriented Programming (OOP)
+* MVC Architecture
+* SQLite Database Integration
+* Java Swing GUI Development
+* SOLID Design Principles
+* JDBC Connectivity
+
+---
+
+## Authors
+
+Kelompok 19
+
+Forum Discussion System dibuat sebagai proyek pembelajaran untuk menerapkan konsep OOP, SOLID, MVC, GUI Programming, dan Database Management menggunakan Java.
