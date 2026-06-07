@@ -15,11 +15,7 @@ public class ControllerLogin {
         this.forumService = forumService;
     }
 
-    /**
-     * Melakukan proses login berdasarkan username.
-     * @param username username yang dimasukkan
-     * @return true jika login berhasil, false jika username tidak ditemukan
-     */
+    // Melakukan proses login berdasarkan username.
     public boolean login(String username) {
         if (username == null || username.trim().isEmpty()) {
             return false;
@@ -32,12 +28,7 @@ public class ControllerLogin {
         return false;
     }
 
-    /**
-     * Melakukan registrasi user baru.
-     * @param username username baru
-     * @param email    email user baru
-     * @return true jika registrasi berhasil, false jika gagal
-     */
+    // Melakukan registrasi user baru.
     public boolean register(String username, String email) {
         if (username == null || username.trim().isEmpty()
                 || email == null || email.trim().isEmpty()) {
@@ -47,25 +38,17 @@ public class ControllerLogin {
         return user != null;
     }
 
-    /**
-     * Mengeluarkan user yang sedang login (reset sesi).
-     */
+    // Mengeluarkan user yang sedang login (reset sesi).
     public void logout() {
         this.currentUser = null;
     }
 
-    /**
-     * Mengambil user yang sedang login.
-     * @return objek User atau null jika belum login
-     */
+    // Mendapatkan user yang sedang login.
     public User getCurrentUser() {
         return currentUser;
     }
-
-    /**
-     * Memeriksa apakah ada user yang sedang login.
-     * @return true jika sudah login
-     */
+    
+    // Memeriksa apakah ada user yang sedang login.
     public boolean isLoggedIn() {
         return currentUser != null;
     }

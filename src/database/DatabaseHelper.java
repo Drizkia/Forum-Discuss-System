@@ -5,6 +5,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/*
+    DatabaseHelper: Kelas ini bertanggung jawab untuk mengelola koneksi dan inisialisasi database.
+    Secara spesifik, kelas ini memiliki method static getConnection() yang mengembalikan koneksi ke database SQLite 
+    dan method initializeDatabase() yang membuat tabel users, posts, dan comments jika belum ada.
+    
+    Penjelasan: 
+    - getConnection(): Mengembalikan koneksi ke database SQLite.
+    - initializeDatabase(): Membuat tabel users, posts, dan comments jika belum ada.
+    - Activate foreign key constraints: Mengaktifkan foreign key constraints.
+*/
+
 public class DatabaseHelper {
     private static final String URL = "jdbc:sqlite:forum.db";
 

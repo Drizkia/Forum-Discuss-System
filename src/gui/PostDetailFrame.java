@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class PostDetailFrame extends JFrame {
 
-    // ── Palette (sama dengan MainFrame) ───────────────────────────────────────
+    // Palette (sama dengan MainFrame)
     private static final Color HDR1      = new Color(79,  70, 229);
     private static final Color HDR2      = new Color(124, 58, 237);
     private static final Color C_BG      = new Color(241, 245, 249);
@@ -66,9 +66,7 @@ public class PostDetailFrame extends JFrame {
         loadComments();
     }
 
-    // =========================================================================
     // Bagian Postingan
-    // =========================================================================
     private JPanel buildPostSection() {
         JPanel section = new JPanel(new BorderLayout());
         section.setBackground(C_BG);
@@ -183,9 +181,7 @@ public class PostDetailFrame extends JFrame {
         return row;
     }
 
-    // =========================================================================
     // Bagian Komentar
-    // =========================================================================
     private JPanel buildCommentSection() {
         JPanel section = new JPanel(new BorderLayout());
         section.setBackground(C_BG);
@@ -330,9 +326,7 @@ public class PostDetailFrame extends JFrame {
         tbl.getColumnModel().getColumn(2).setMaxWidth(170);
     }
 
-    // =========================================================================
     // Operasi komentar
-    // =========================================================================
     private void loadComments() {
         commentTableModel.setRowCount(0);
         currentComments = currentPost.getComments();
@@ -376,9 +370,7 @@ public class PostDetailFrame extends JFrame {
         }
     }
 
-    // =========================================================================
     // Helper tombol
-    // =========================================================================
     private JButton mkHdrBtn(String text) {
         JButton b = new JButton(text) {
             boolean ov;

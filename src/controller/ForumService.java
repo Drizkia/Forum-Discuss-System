@@ -198,7 +198,6 @@ public class ForumService implements IForumService {
                         timestamp = LocalDateTime.parse(tsStr, formatter);
                     }
                 } catch (Exception ex) {
-                    // Ignore, fallback to now
                 }
                 Comment comment = new Comment(rs.getInt("id"), rs.getString("content"), author, timestamp);
                 post.addComment(comment);

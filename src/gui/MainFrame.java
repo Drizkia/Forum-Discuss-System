@@ -17,27 +17,27 @@ import java.util.List;
  */
 public class MainFrame extends JFrame {
 
-    // ── Palette ───────────────────────────────────────────────────────────────
-    private static final Color HDR1    = new Color(79,  70, 229);   // Indigo-600
-    private static final Color HDR2    = new Color(124, 58, 237);   // Violet-600
-    private static final Color C_BG    = new Color(241, 245, 249);  // Slate-100
+    // Palette
+    private static final Color HDR1    = new Color(79,  70, 229);   
+    private static final Color HDR2    = new Color(124, 58, 237);   
+    private static final Color C_BG    = new Color(241, 245, 249);  
     private static final Color C_CARD  = Color.WHITE;
-    private static final Color C_HOVER = new Color(238, 242, 255);  // Indigo-50
-    private static final Color C_BORD  = new Color(226, 232, 240);  // Slate-200
+    private static final Color C_HOVER = new Color(238, 242, 255);  
+    private static final Color C_BORD  = new Color(226, 232, 240);  
     private static final Color C_BORD_HOV = new Color(165, 180, 252);
     private static final Color C_TEXT  = new Color(15,  23,  42);
     private static final Color C_SUB   = new Color(100, 116, 139);
     private static final Color C_ACC   = new Color(79,  70, 229);
-    private static final Color C_HDR_SUB = new Color(199, 210, 254); // Indigo-200
+    private static final Color C_HDR_SUB = new Color(199, 210, 254); 
 
     // Avatar warna berdasarkan indeks post
     private static final Color[] AV_COLORS = {
-        new Color(99,  102, 241),  // Indigo
-        new Color(236, 72,  153),  // Pink
-        new Color(245, 158, 11),   // Amber
-        new Color(16,  185, 129),  // Emerald
-        new Color(59,  130, 246),  // Blue
-        new Color(239, 68,  68)    // Red
+        new Color(99,  102, 241),  
+        new Color(236, 72,  153),  
+        new Color(245, 158, 11),   
+        new Color(16,  185, 129),  
+        new Color(59,  130, 246),  
+        new Color(239, 68,  68)    
     };
 
     private final ForumController controller;
@@ -59,9 +59,7 @@ public class MainFrame extends JFrame {
         loadPosts();
     }
 
-    // =========================================================================
     // Header
-    // =========================================================================
     private JPanel buildHeader() {
         JPanel hdr = new JPanel(new BorderLayout()) {
             @Override protected void paintComponent(Graphics g) {
@@ -138,9 +136,7 @@ public class MainFrame extends JFrame {
         return b;
     }
 
-    // =========================================================================
-    // Konten (scroll area)
-    // =========================================================================
+    // Konten
     private JScrollPane buildContent() {
         postContainer = new JPanel(new GridBagLayout());
         postContainer.setBackground(C_BG);
@@ -189,9 +185,7 @@ public class MainFrame extends JFrame {
         postContainer.repaint();
     }
 
-    // =========================================================================
-    // PostCard — kartu satu postingan
-    // =========================================================================
+    // PostCard
     private class PostCard extends JPanel {
 
         private boolean hovered = false;
@@ -206,7 +200,7 @@ public class MainFrame extends JFrame {
 
             Color ac = AV_COLORS[idx % AV_COLORS.length];
 
-            // ── Baris Author ─────────────────────────────────────────────
+            // Baris Author
             JPanel authorRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 12));
             authorRow.setOpaque(false);
 
@@ -244,7 +238,7 @@ public class MainFrame extends JFrame {
 
             authorRow.add(avatar); authorRow.add(info);
 
-            // ── Body: judul + isi ─────────────────────────────────────────
+            // Body: judul + isi
             JPanel body = new JPanel();
             body.setOpaque(false);
             body.setLayout(new BoxLayout(body, BoxLayout.Y_AXIS));
@@ -274,7 +268,7 @@ public class MainFrame extends JFrame {
             body.add(Box.createVerticalStrut(5));
             body.add(ta);
 
-            // ── Footer: komentar + waktu ─────────────────────────────────
+            // Footer: komentar + waktu
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMM yyyy, HH:mm");
             JPanel footer = new JPanel(new BorderLayout());
             footer.setOpaque(false);

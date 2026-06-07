@@ -9,13 +9,13 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class CreateEditPostFrame extends JDialog {
-    private static final Color HDR1    = new Color(79, 70, 229);   // Indigo-600
-    private static final Color HDR2    = new Color(124, 58, 237);  // Violet-600
-    private static final Color C_BG    = new Color(241, 245, 249);  // Slate-100
+    private static final Color HDR1    = new Color(79, 70, 229);
+    private static final Color HDR2    = new Color(124, 58, 237); 
+    private static final Color C_BG    = new Color(241, 245, 249);
     private static final Color C_CARD  = Color.WHITE;
     private static final Color C_TEXT  = new Color(15, 23, 42);
     private static final Color C_SUB   = new Color(100, 116, 139);
-    private static final Color C_BORD  = new Color(226, 232, 240);  // Slate-200
+    private static final Color C_BORD  = new Color(226, 232, 240); 
     private static final Color PRIMARY = new Color(79, 70, 229);
     private static final Color PHOVER  = new Color(67, 56, 202);
     private static final Color SUCCESS = new Color(16, 185, 129);

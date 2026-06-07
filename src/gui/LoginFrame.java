@@ -8,14 +8,13 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * LoginFrame — desain modern dengan gradient indigo-to-violet
- * dan kartu putih mengambang di tengah.
+ * LoginFrame
  */
 public class LoginFrame extends JFrame {
 
-    // ── Palette ───────────────────────────────────────────────────────────────
-    private static final Color BG1     = new Color(79, 70, 229);   // Indigo-600
-    private static final Color BG2     = new Color(124, 58, 237);  // Violet-600
+    // Palette
+    private static final Color BG1     = new Color(79, 70, 229);   
+    private static final Color BG2     = new Color(124, 58, 237);  
     private static final Color PRIMARY = new Color(79, 70, 229);
     private static final Color PHOVER  = new Color(67, 56, 202);
     private static final Color SUCCESS = new Color(16, 185, 129);
@@ -37,7 +36,7 @@ public class LoginFrame extends JFrame {
         setContentPane(buildBackground());
     }
 
-    // ── Background ────────────────────────────────────────────────────────────
+    // Background
     private JPanel buildBackground() {
         JPanel bg = new JPanel(new GridBagLayout()) {
             @Override protected void paintComponent(Graphics g) {
@@ -52,7 +51,7 @@ public class LoginFrame extends JFrame {
         return bg;
     }
 
-    // ── Card ──────────────────────────────────────────────────────────────────
+    // Card
     private JPanel buildCard() {
         JPanel card = new JPanel(new BorderLayout()) {
             @Override protected void paintComponent(Graphics g) {
@@ -75,7 +74,7 @@ public class LoginFrame extends JFrame {
         return card;
     }
 
-    // ── Card header ───────────────────────────────────────────────────────────
+    // Card header
     private JPanel buildHeader() {
         JPanel p = new JPanel();
         p.setOpaque(false);
@@ -98,7 +97,7 @@ public class LoginFrame extends JFrame {
         return p;
     }
 
-    // ── Tabs ──────────────────────────────────────────────────────────────────
+    // Tabs
     private JTabbedPane buildTabs() {
         JTabbedPane tp = new JTabbedPane();
         tp.setFont(new Font("Segoe UI", Font.PLAIN, 13));
@@ -107,7 +106,7 @@ public class LoginFrame extends JFrame {
         return tp;
     }
 
-    // ── Login tab ─────────────────────────────────────────────────────────────
+    // Login tab
     private JPanel buildLoginTab() {
         JPanel p = new JPanel();
         p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
@@ -138,7 +137,7 @@ public class LoginFrame extends JFrame {
         return p;
     }
 
-    // ── Register tab ──────────────────────────────────────────────────────────
+    // Register tab
     private JPanel buildRegisterTab() {
         JPanel p = new JPanel();
         p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
@@ -176,7 +175,7 @@ public class LoginFrame extends JFrame {
         return p;
     }
 
-    // ── Helpers ───────────────────────────────────────────────────────────────
+    // Helpers
     private JPanel fGroup(String label, JTextField f) {
         JPanel g = new JPanel(new BorderLayout(0, 5));
         g.setOpaque(false);

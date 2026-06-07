@@ -16,18 +16,13 @@ public class ControllerMain {
         this.forumController = forumController;
     }
 
-    /**
-     * Membuka LoginFrame sebagai titik awal aplikasi.
-     */
+    // Membuka LoginFrame sebagai titik awal aplikasi.
     public void openLoginFrame() {
         LoginFrame loginFrame = new LoginFrame(forumController);
         loginFrame.setVisible(true);
     }
 
-    /**
-     * Membuka MainFrame setelah user berhasil login.
-     * Dipanggil setelah proses autentikasi sukses.
-     */
+    // Membuka MainFrame setelah user berhasil login.
     public void openMainFrame() {
         User currentUser = forumController.getCurrentUser();
         if (currentUser == null) {
@@ -37,10 +32,7 @@ public class ControllerMain {
         mainFrame.setVisible(true);
     }
 
-    /**
-     * Kembali ke LoginFrame (misalnya setelah logout).
-     * Membuka ulang LoginFrame.
-     */
+    // Kembali ke LoginFrame (misalnya setelah logout).
     public void backToLogin() {
         openLoginFrame();
     }

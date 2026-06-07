@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Inheritance: Post merupakan turunan dari ForumItem (menggunakan extends).
- * Composition: Post memiliki daftar Comment (List<Comment>).
- * Encapsulation: Field privat dengan akses melalui getter/setter yang diwarisi dan dibuat.
  * SRP: Mengelola data postingan.
  */
+
+// Inheritance
 public class Post extends ForumItem {
+    // Encapsulation
     private String title;
+    // Composition
     private List<Comment> comments;
 
     public Post(String title, String content, User author) {
@@ -42,6 +43,7 @@ public class Post extends ForumItem {
         return comments;
     }
 
+    // Polymorphism
     @Override
     public String getDisplayText() {
         return "Post: " + title + " - " + getContent() + " (by " + getAuthor().getUsername() + ")";

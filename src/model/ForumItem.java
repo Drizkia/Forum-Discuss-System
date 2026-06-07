@@ -3,12 +3,12 @@ package sistemforumdiskusi_19.model;
 import java.time.LocalDateTime;
 
 /**
- * Abstraction: Abstract class sebagai blue-print untuk item forum (Post, Comment).
- * Inheritance: Class ini akan diturunkan.
- * Encapsulation: Menggunakan protected/private attribute dengan public getter/setter.
  * SOLID (SRP): Menangani atribut dasar dari sebuah entitas konten di forum.
  */
+
+// Abstraction
 public abstract class ForumItem implements Displayable {
+    // Encapsulation 
     private int id;
     private String content;
     private User author;
@@ -59,9 +59,7 @@ public abstract class ForumItem implements Displayable {
         this.timestamp = timestamp;
     }
 
-    /**
-     * Polymorphism (Method Overriding): 
-     * Method abstract yang harus diimplementasikan oleh subclass dengan perilaku yang berbeda.
-     */
+    // Polymorphism (Method Overriding)
+    // Abstraction
     public abstract String getDisplayText();
 }

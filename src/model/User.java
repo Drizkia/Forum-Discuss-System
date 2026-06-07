@@ -1,10 +1,10 @@
 package sistemforumdiskusi_19.model;
 
 /**
- * Encapsulation: Field privat dengan public getters/setters.
  * SRP: Mengelola data user.
  */
 public class User {
+    // Encapsulation 
     private int id;
     private String username;
     private String email;
@@ -20,10 +20,11 @@ public class User {
         this.email = email;
     }
 
+    // Encapsulation Getter
     public int getId() {
         return id;
     }
-
+    //Encapsulation Setter
     public void setId(int id) {
         this.id = id;
     }
