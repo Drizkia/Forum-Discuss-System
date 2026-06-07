@@ -1,3 +1,5 @@
+package Main;
+
 
 
 import sistemforumdiskusi_19.database.DatabaseHelper;
@@ -10,7 +12,7 @@ import javax.swing.UIManager;
  * Main class untuk menjalankan sistem forum dengan GUI dan pola MVC.
  */
 
-public class SistemForumDiskusi_19 {
+public class MainApp {
     public static void main(String[] args) {
         // Initialize Database
         DatabaseHelper.initializeDatabase();
