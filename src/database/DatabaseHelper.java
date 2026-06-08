@@ -17,7 +17,7 @@ import java.sql.Statement;
 */
 
 public class DatabaseHelper {
-    private static final String URL = "jdbc:sqlite:forum.db";
+    private static final String URL = "jdbc:sqlite:src/database/forum.db";
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL);
